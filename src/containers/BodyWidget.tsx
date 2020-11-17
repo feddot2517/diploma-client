@@ -2,13 +2,14 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import {TrayWidget} from './TrayWidget';
 import {RDCore} from '../RDCore';
-import {TrayItemWidget} from '../components/TrayItemWidget';
-import {DefaultNodeModel} from '@projectstorm/react-diagrams';
 import {CanvasWidget} from '@projectstorm/react-canvas-core';
 import styled from '@emotion/styled';
 import './BodyWidget.css'
 import {useForceUpdate} from "../utils/useForceUpdate";
 import {patches} from "../patches";
+import {Button} from "antd";
+import {CaretRightOutlined} from '@ant-design/icons'
+import axios from 'axios'
 
 export interface BodyWidgetProps {
     app: RDCore;
@@ -53,6 +54,21 @@ export const BodyWidget = (props: BodyWidgetProps) => {
                         event.preventDefault();
                     }}>
                     <CanvasWidget className="canvas-widget" engine={props.app.getDiagramEngine()}/>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        position: "absolute",
+                        width: '100%',
+                        height: '48px',
+                        top: 0,
+                        background: '#112233',
+                        padding: 8,
+                    }}>
+                        <Button onClick={()=>axios.post('http://localhost:3030/build', {patchTree: props.app.serialize()}).then((e)=>console.log(e.data))} type="default">
+                            <CaretRightOutlined style={{color: '#04c12b'}} />
+                        </Button>
+                    </div>
                 </Layer>
             </Content>
         </Body>

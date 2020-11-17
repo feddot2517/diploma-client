@@ -1,10 +1,11 @@
 import * as RD from "@projectstorm/react-diagrams";
+import {RDNodeModel} from "../../components/RDNodeModel";
 
 export function AntCardPatch() {
-    const node = new RD.DefaultNodeModel(AntCardDefaultData.name, AntCardDefaultData.color);
-    node.addInPort('react-nodes');
+    const node = new RDNodeModel(AntCardDefaultData.name, AntCardDefaultData.color);
+    node.addInPort('reactNodes');
     node.addInPort('title');
-    node.addOutPort('Ant Card');
+    node.addOutPort('card');
 
     return node
 }

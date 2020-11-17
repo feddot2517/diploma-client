@@ -19,20 +19,21 @@ export const Label = styled.div`
 		flex-grow: 1;
 	`;
 
-export const Port = styled.div`
+export const Port = styled.div<{hasConnection: boolean}>`
 		width: 15px;
 		height: 15px;
-		background: rgba(white, 0.1);
+		background: ${(p) => p.hasConnection?'#2acaf6':'#d7d7d7'};
 
 		&:hover {
-			background: rgb(192, 255, 0);
+			background: ${'#6e6d6f'};
 		}
 	`;
 
 export const RDPortLabel = (props: DefaultPortLabelProps) => {
+    const portHasConnection = !!Object.keys(props.port.links).length;
     const port = (
         <PortWidget engine={props.engine} port={props.port}>
-            <Port/>
+            <Port hasConnection={portHasConnection}/>
         </PortWidget>
     );
 

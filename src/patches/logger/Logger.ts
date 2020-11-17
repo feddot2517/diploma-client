@@ -4,7 +4,6 @@ import {RDNodeModel} from "../../components/RDNodeModel";
 export function LoggerPatch() {
     const node = new RDNodeModel(LoggerDefaultData.name ,LoggerDefaultData.color);
     node.addInPort('value');
-    node.addInPort('q');
 
     return node
 }

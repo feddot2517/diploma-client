@@ -1,10 +1,11 @@
 import * as RD from "@projectstorm/react-diagrams";
+import {RDNodeModel} from "../../components/RDNodeModel";
 
 export function ListPatch() {
-    const node = new RD.DefaultNodeModel(ListDefaultData.name, ListDefaultData.color);
+    const node = new RDNodeModel(ListDefaultData.name, ListDefaultData.color);
     node.addInPort('array');
-    node.addInPort('react-node');
-    node.addOutPort('react-node');
+    node.addInPort('reactNode');
+    node.addOutPort('reactNode');
 
     return node
 }

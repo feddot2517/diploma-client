@@ -13,11 +13,16 @@ export class RDCore {
         this.newModel();
     }
 
+    serialize() {
+        return this.activeModel.serialize();
+    }
+
     public newModel() {
         this.activeModel = new RD.DiagramModel();
         this.diagramEngine.setModel(this.activeModel);
 
         const defaultPatch = LoggerPatch();
+        defaultPatch.setPosition(100, 100)
 
         this.activeModel.addAll(defaultPatch);
     }

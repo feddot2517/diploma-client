@@ -5,12 +5,13 @@ import { RDNodeModel } from './RDNodeModel';
 import { DefaultPortLabel } from '@projectstorm/react-diagrams';
 import styled from '@emotion/styled';
 import {RDPortLabel} from "./RDPortWidget";
+import {Input} from "antd";
 
 export const Node = styled.div<{ background: string; selected: boolean }>`
 		background-color: ${(p) => p.background};
 		border-radius: 5px;
 		font-family: sans-serif;
-		padding: 5px;
+		padding: 2px;
 		color: white;
 		border: solid 2px black;
 		overflow: visible;
@@ -64,6 +65,8 @@ export const RDNodeWidget = (props: DefaultNodeProps) => {
         return <RDPortLabel engine={props.engine} port={port} key={port.getID()}/>;
     };
 
+    const { extraProps } = props.node;
+
     return (
         <Node
             data-default-node-name={props.node.getOptions().name}
@@ -76,6 +79,23 @@ export const RDNodeWidget = (props: DefaultNodeProps) => {
                 <PortsContainer>{_.map(props.node.getInPorts(), generatePort)}</PortsContainer>
                 <PortsContainer>{_.map(props.node.getOutPorts(), generatePort)}</PortsContainer>
             </Ports>
+            {extraProps &&
+                <div style={{padding: 4, background: 'white'}}>
+                    {Object.keys(extraProps).map((key, index) => {
+                        return (
+                            <Input
+                                key={index}
+                                onChange={(e)=>props.node.extraProps[key]=e.target.value}
+                                placeholder="value"
+                                aria-label="qwe"
+                                style={{width: 64}}
+                                size="small"
+                                title="qwe"
+                            />
+                        )
+                    })}
+                </div>
+            }
         </Node>
     );
 }

@@ -1,8 +1,9 @@
 import * as RD from "@projectstorm/react-diagrams";
+import {RDNodeModel} from "../../components/RDNodeModel";
 
 export function RenderPatch() {
-    const node = new RD.DefaultNodeModel(RenderDefaultData.name, RenderDefaultData.color);
-    let port = node.addInPort('react-node');
+    const node = new RDNodeModel(RenderDefaultData.name, RenderDefaultData.color);
+    let port = node.addInPort('router');
 
     return node
 }

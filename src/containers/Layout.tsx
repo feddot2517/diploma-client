@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout } from 'antd';
+import {Button, Layout} from 'antd';
 import { RDCore } from "../RDCore";
 import {BodyWidget} from "./BodyWidget";
 import {TrayWidget} from "./TrayWidget";
