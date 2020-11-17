@@ -8,6 +8,7 @@ import {HtmlHeaderDefaultData} from "./html/Header";
 import {RouterDefaultData} from "./react/Router";
 import {RouteDefaultData} from "./react/Route";
 import {ComponentDefaultData} from "./react/Component";
+import {RenderHtmlDefaultData} from "./render/RenderHtml";
 
 
 export const patches = [
@@ -21,4 +22,5 @@ export const patches = [
     RouterDefaultData,
     RouteDefaultData,
     ComponentDefaultData,
+    RenderHtmlDefaultData
 ]
